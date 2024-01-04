@@ -15,12 +15,18 @@ const DiaryEditor = () => {
 	};
 
 	const handleSubmit = () => {
-		console.log(state);
+		// 유효성 검사
+		if (state.author.length < 1) {
+			alert('작성자는 최소 1글자 이상 입력해주세요!');
+			return; //진행을 막아줌.
+		}
+
+		if (state.content.length < 5) {
+			alert('일기 본문은 최소 5글자 이상 입력해주세요!');
+			return;
+		}
 		alert('저장 성공!');
 	};
-
-	// const [author, setAuthor] = useState('');
-	// const [contents, setContents] = useState('');
 
 	return (
 		<div className="DiaryEditor">
@@ -31,16 +37,6 @@ const DiaryEditor = () => {
 					value={state.author}
 					onChange={handleChangeState}
 				/>
-				{/* <input
-					value={state.author}
-					onChange={(e) => {
-						setState({
-							...state, // content: state.content 대신, 얘가 위로 오도록 순서 주의
-							// 원래 있던 state를 먼저 펼쳐주고 변경되는 값을 작성해야 됨.
-							author: e.target.value,
-						});
-					}}
-				/> */}
 			</div>
 			<div>
 				<textarea
@@ -48,15 +44,6 @@ const DiaryEditor = () => {
 					value={state.content}
 					onChange={handleChangeState}
 				></textarea>
-				{/* <textarea
-					value={state.content}
-					onChange={(e) => {
-						setState({
-							author: state.author,
-							content: e.target.value,
-						});
-					}}
-				></textarea> */}
 			</div>
 			<div>
 				<select
