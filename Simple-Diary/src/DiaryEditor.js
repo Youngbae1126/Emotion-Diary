@@ -8,9 +8,6 @@ const DiaryEditor = () => {
 	});
 
 	const handleChangeState = (e) => {
-		// console.log(e.target.name);
-		// console.log(e.target.value);
-
 		setState({
 			...state,
 			[e.target.name]: e.target.value,
@@ -48,7 +45,7 @@ const DiaryEditor = () => {
 			<div>
 				<textarea
 					name="content"
-					value={state.author}
+					value={state.content}
 					onChange={handleChangeState}
 				></textarea>
 				{/* <textarea
